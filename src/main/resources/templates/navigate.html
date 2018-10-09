@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="/js/jquery-2.1.1.js"></script>
+    <script src="/js/mui.js"></script>
+    <link href="/css/mui.css" rel="stylesheet" />
+
+    <script src="/js/navigate.js"></script>
+    <link href="/css/navigate.css" rel="stylesheet" />
+
+    <title>Welcome!</title>
+</head>
+<body>
+
+<div class="mui-content">
+    <div class="logo">
+        <h3>欢迎你，<label th:text="${session.user.realname}"></label></h3>
+        <a id="logout">注销登录</a>
+    </div>
+
+    <div class="mui-card">
+        <div class="mui-card-content">
+            <ul class="mui-table-view mui-grid-view mui-grid-9">
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                    <a href="#">
+                        <span class="mui-icon mui-icon-compose"></span>
+                        <div class="mui-media-body">成绩查询</div>
+                    </a>
+                </li>
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-6">
+                    <a href="/img/2014040191031.pdf">
+                        <span class="mui-icon mui-icon-image"></span>
+                        <div class="mui-media-body">奖学金申请表生成</div>
+                    </a>
+                </li>
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                    <a href="#">
+                        <span class="mui-icon mui-icon-spinner-cycle mui-spin"></span>
+                        <div class="mui-media-body">敬请期待</div>
+                    </a>
+                </li>
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                    <a href="#">
+                        <span class="mui-icon mui-icon-spinner-cycle mui-spin"></span>
+                        <div class="mui-media-body">期待</div>
+                    </a>
+                </li>
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                    <a href="#">
+                        <span class="mui-icon mui-icon-spinner-cycle mui-spin"></span>
+                        <div class="mui-media-body">个</div>
+                    </a>
+                </li>
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                    <a href="#">
+                        <span class="mui-icon mui-icon-spinner-cycle mui-spin"></span>
+                        <div class="mui-media-body">锤</div>
+                    </a>
+                </li>
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                    <a href="#">
+                        <span class="mui-icon mui-icon-spinner-cycle mui-spin"></span>
+                        <div class="mui-media-body">子</div>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+    <div class="tips">
+        <label class="normal">没有你想要的功能？<br>请在微信公众号留言说明，若需求合理，我们会尽快开发。<br></label>
+            <label class="small"><br>反正做不出来我就当你没说过 (￣▽￣)／</label>
+    </div>
+</div>
+<div class="mui-popover" id="code"><img src="img/code.gif" width="70%"><br>长按识别二维码<br>关注我们，你想要的这里都有</div>
+<div class="myfooter"><label><b>CopyRight © <a href="#code" id="openPopover">DH一网通</a> | Powered By <a href="/aboutme">Ant</a></b></label></div>
+</body>
+</html>

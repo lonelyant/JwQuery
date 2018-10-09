@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>登 录</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="/js/jquery-2.1.1.js"></script>
+		<script src="/js/mui.js"></script>
+		<script src="/js/login.js"></script>
+		<link href="/css/mui.css" rel="stylesheet" />
+		<link href="/css/login.css" rel="stylesheet" />
+	</head>
+
+	<body>
+
+		<script type="text/javascript">
+			mui.init()
+		</script>
+
+
+		<div class="mui-content">
+			<div class="logo">
+				<img src="/img/b.png" width="50%" />
+			</div>
+
+			<div class="mui-card">
+				<div class="mui-card-content">
+					<form class="mui-input-group" id="login">
+						<div class="mui-input-row">
+
+							<label>学号</label>
+
+							<input type="number" class="mui-input-clear" name="account" id="account" placeholder="请输入学号">
+
+						</div>
+						<div class="mui-input-row">
+							<label>密码</label>
+							<input type="password" class="mui-input-password" name="password" id="password" placeholder="请输入密码" autocomplete="new-password">
+						</div>
+						<div class="mui-input-row">
+							<label>保持登录</label>
+							<div class="mui-switch mui-switch-mini mui-active" name="isSavePwd" id="isSavePwd">
+								<div class="mui-switch-handle" ></div>
+							</div>
+						</div>
+						<div class="mui-button-row">
+							<button id="submit" type="button" data-loading-text="登录中..." class="mui-btn mui-btn-primary submit">提 交</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="mui-popover" id="code"><img src="/img/code.gif" width="70%"><br>长按识别二维码<br>关注我们，你想要的这里都有</div>
+		 <div class="myfooter"><label><b>CopyRight © <a href="#code" id="openPopover">DH一网通</a> | Powered By <a href="/aboutme">Ant</a></b></label></div>
+	</body>
+
+</html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ant.dao.UserMapper">
+    <insert id="save" parameterType="com.ant.model.User">
+      insert into student(account, password, realname, gender, grade, major, classname,birth,cookie) VALUES (#{account},#{password},#{realname},#{gender},#{grade},#{major},#{classname},#{birth},#{cookieStore.cookies[0].value})
+    </insert>
+
+    <update id="update" parameterType="com.ant.model.User">
+      update student SET password=#{password},cookie=#{cookieStore.cookies[0].value},realname=#{realname},gender=#{gender},grade=#{grade},major=#{major},classname=#{classname},birth=#{birth} where account=#{account}
+    </update>
+
+    <select id="find" parameterType="string" resultType="com.ant.model.User">
+        SELECT * from student where account=#{account}
+    </select>
+</mapper>

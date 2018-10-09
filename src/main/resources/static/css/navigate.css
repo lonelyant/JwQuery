@@ -1,0 +1,47 @@
+html {
+	/* background-color: white; */
+	font-family: Arial;
+}
+
+.logo {
+	margin-left: 10%;
+	margin-bottom: 10%;
+}
+
+
+.mui-card-content {
+	color: #AAAAAA;
+}
+
+.tips{
+	width: 100%;
+	text-align: center;
+	font-size: 14px;
+	letter-spacing: 1px;
+	font-family: Arial;
+	color: #AAAAAA;
+	margin-top: 1rem;
+}
+.small{
+	font-size: 7px;
+}
+.myfooter {
+	height: 40px;
+	line-height: 40px;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	/* background: white; */
+	color: #AAAAAA;
+	font-family: Arial;
+	font-size: 12px;
+	letter-spacing: 1px;
+}
+
+#code{
+	font-family: '微软雅黑';
+	color: #AAAAAA;
+	text-align: center;
+	padding: 0.5rem;
+}

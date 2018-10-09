@@ -1,0 +1,48 @@
+html {
+	background-color: white;
+	font-family: Arial;
+}
+
+.mui-content {
+	background-color: white;
+}
+
+.logo {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.mui-input-group {
+	padding: 1.2rem;
+}
+
+.mui-card-content {
+	color: #AAAAAA;
+}
+
+#submit {
+	margin-top: 1rem;
+	margin-bottom: 0.8rem;
+	width: 50%;
+}
+
+.myfooter {
+	height: 40px;
+	line-height: 40px;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	background: white;
+	color: #AAAAAA;
+	font-family: Arial;
+	font-size: 12px;
+	letter-spacing: 1px;
+}
+
+#code{
+	font-family: '微软雅黑';
+	color: #AAAAAA;
+	text-align: center;
+	padding: 0.5rem;
+}

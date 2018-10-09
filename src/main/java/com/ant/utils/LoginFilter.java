@@ -74,7 +74,7 @@ public class LoginFilter implements Filter {
             for (Cookie cookie : cookies) {
                 if (Objects.equals(cookie.getName(), "userinfo")) {
                     info = cookie.getValue();
-                    System.out.println(info);
+                    //System.out.println(info);
                 }
             }
         }

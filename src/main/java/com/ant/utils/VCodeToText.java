@@ -59,6 +59,7 @@ public class VCodeToText {
         try {
             save(savePath,httpClient);
             vcode = VCodeOCR.ocr(savePath);
+            new File(savePath).deleteOnExit();
         } catch (Exception e) {
             e.printStackTrace();
         }

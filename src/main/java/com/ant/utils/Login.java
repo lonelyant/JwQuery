@@ -9,9 +9,11 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.jsoup.Jsoup;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import java.util.UUID;
 
 /**
@@ -21,6 +23,8 @@ import java.util.UUID;
  */
 public class Login {
 
+    private static Properties properties = PropertiesUtil.argumentConfigParse();
+
     public static LoginModel login(User user) throws IOException {
         LoginModel loginModel = new LoginModel();
         CookieStore cookieStore = new BasicCookieStore();
@@ -29,7 +33,7 @@ public class Login {
         while (true) {
             //验证码保存路径
             //String codeSavePath = new ClassPathResource("codeImage/"+ UUID.randomUUID().toString().replaceAll("-", "") + ".gif").getPath();
-            String codeSavePath = "D:\\codeImage\\" + UUID.randomUUID().toString().replaceAll("-", "") + ".gif";
+            String codeSavePath = properties.getProperty("BasePath")+properties.getProperty("codeImagePath") + UUID.randomUUID().toString().replaceAll("-", "") + ".gif";
 //            String codeSavePath = "/root/Ant/JW/codeImage/" + UUID.randomUUID().toString().replaceAll("-", "") + ".gif";
             System.out.println(" [ INFO ] 请求验证码...");
             String vcode = new VCodeToText().getCodeText(codeSavePath, httpClient);
@@ -65,8 +69,15 @@ public class Login {
                     String failHtml = HttpUtils.getHtmlFromResponse(httpResponse);
                     String text = Jsoup.parse(failHtml).select("script").get(1).data();
                     String substring = text.substring(text.indexOf("'") + 1, text.indexOf(")") - 1);
+                    int errorNum = 0;
                     if (substring.equals("验证码不正确！！")) {
                         System.out.println(" [INFO] 验证码识别失败，自动进行下一次登录...---------------------------");
+                        errorNum++;
+                        if (errorNum >5){
+                            loginModel.setStatus(false);
+                            loginModel.setInfo("验证码自动识别出错次数达上限");
+                            break;
+                        }
                     } else {
                         loginModel.setStatus(false);
                         loginModel.setInfo(substring);

@@ -48,17 +48,7 @@ public class DES {
                 sb.append(hex.toUpperCase());
             }
             return sb.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
@@ -89,15 +79,7 @@ public class DES {
             cipher.init(Cipher.DECRYPT_MODE, secretKeySpec);
             byte[] result = cipher.doFinal(byteRresult);
             return new String(result);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;

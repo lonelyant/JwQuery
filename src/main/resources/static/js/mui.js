@@ -517,13 +517,13 @@ var mui = (function(document, undefined) {
 (function($, document) {
 	function detect(ua) {
 		this.os = this.os || {};
-		var plus = ua.match(/Html5Plus/i); //TODO 5\+Browser?
+		var plus = ua.match(/Html5Plus/i);
 		if (plus) {
 			this.os.plus = true;
 			$(function() {
 				document.body.classList.add('mui-plus');
 			});
-			if (ua.match(/StreamApp/i)) { //TODO 最好有流应用自己的标识
+			if (ua.match(/StreamApp/i)) {
 				this.os.stream = true;
 				$(function() {
 					document.body.classList.add('mui-plus-stream');
@@ -695,7 +695,7 @@ var mui = (function(document, undefined) {
 				delegateCallback.type = event;
 				delegateFns[mid(element)] = delegateFnArray;
 				element.addEventListener(event, delegateCallback);
-				if (event === 'tap') { //TODO 需要找个更好的解决方案
+				if (event === 'tap') {
 					element.addEventListener('click', function(e) {
 						if (e.target) {
 							var tagName = e.target.tagName;
@@ -1060,7 +1060,6 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 				}
 			}
 			var target = e.target;
-			//TODO 需考虑所有键盘弹起的情况
 			if (target.tagName && (target.tagName === 'TEXTAREA' || (target.tagName === 'INPUT' && (target.type === 'text' || target.type === 'search' || target.type === 'number')))) {
 				if (target.disabled || target.readOnly) {
 					return;
@@ -1552,7 +1551,6 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 	window.addEventListener($.EVENT_CANCEL, handleTouchEvent);
 	//fixed hashchange(android)
 	window.addEventListener($.EVENT_CLICK, function(e) {
-		//TODO 应该判断当前target是不是在targets.popover内部，而不是非要相等
 		if(($.os.android || $.os.ios) && (($.targets.popover && e.target === $.targets.popover) || ($.targets.tab) || $.targets.offcanvas || $.targets.modal)) {
 			e.preventDefault();
 		}
@@ -1628,7 +1626,6 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 		if (event.type === $.EVENT_END || event.type === $.EVENT_CANCEL) {
 			var options = this.options;
 			touch.swipe = false;
-			//TODO 后续根据velocity计算
 			if (touch.direction && options.swipeMaxTime > touch.deltaTime && touch.distance > options.swipeMinDistince) {
 				touch.swipe = true;
 				$.trigger(session.target, name, touch);
@@ -2257,7 +2254,6 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 			}
 		}
 		if(!$.os.plus) {
-			//TODO 先临时这么处理：手机上顶层跳，PC上parent跳
 			if($.os.ios || $.os.android) {
 				window.top.location.href = url;
 			} else {
@@ -2347,7 +2343,6 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 		var id = options.id || url;
 
 		if(!$.os.plus) {
-			//TODO 先临时这么处理：手机上顶层跳，PC上parent跳
 			if($.os.ios || $.os.android) {
 				window.top.location.href = url;
 			} else {
@@ -2437,7 +2432,6 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 				//其次是图片
 				var _backImage = _back.image;
 				if(_backImage.base64Data || _backImage.imgSrc) {
-					//TODO 此处需要处理百分比的情况
 					backClick = {
 						left:parseInt(_backImage.position.left),
 						right:parseInt(_backImage.position.left) + parseInt(_backImage.position.width)
@@ -2535,7 +2529,6 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 				}
 			}
 
-			//TODO 理论上，子webview也应该计算到预加载队列中，但这样就麻烦了，要退必须退整体，否则可能出现问题；
 			$.webviews[id] = {
 				webview: webview, //目前仅preload的缓存webview
 				preload: true,
@@ -2645,7 +2638,6 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 		var id = options.id || options.url;
 		var webview;
 		if(!$.webviews[id]) { //保证执行一遍
-			//TODO 这里也有隐患，比如某个webview不是作为subpage创建的，而是作为target webview的话；
 			if(!plus.webview.getWebviewById(id)) {
 				webview = plus.webview.create(options.url, id, options.styles, options.extras);
 			}
@@ -2679,7 +2671,6 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 			var subpages = options.subpages || [];
 			if($.os.plus) {
 				$.plusReady(function() {
-					//TODO  这里需要判断一下，最好等子窗口加载完毕后，再调用主窗口的show方法；
 					//或者：在openwindow方法中，监听实现；
 					$.each(subpages, function(index, subpage) {
 						$.appendWebview(subpage);
@@ -3534,7 +3525,6 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
                 }
                 this.bottomLoading = this.bottomPocket.querySelector('.' + CLASS_PULL_LOADING);
                 this.bottomCaption = this.bottomPocket.querySelector('.' + CLASS_PULL_CAPTION);
-                //TODO only for h5
                 this.wrapper.addEventListener('scrollbottom', this);
             }
         },
@@ -5288,7 +5278,6 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
         }).extend($.extend({
             setStopped: function(stopped) { //该方法是子页面调用的
                 this.stopped = !!stopped;
-                // TODO 此处需要设置当前webview的bounce为none,目前5+有BUG
                 if (this.stopped) {
                     this.disablePullupToRefresh();
                     this.disablePulldownToRefresh();
@@ -6039,7 +6028,6 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 		if (!$.targets.offcanvas) {
 			return;
 		}
-		//TODO 此处类型的代码后续考虑统一优化(target机制)，现在的实现费力不讨好
 		var target = e.target;
 		for (; target && target !== document; target = target.parentNode) {
 			if (target.tagName === 'A' && target.hash && target.hash === ('#' + $.targets.offcanvas.id)) {
@@ -6283,7 +6271,6 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 				//						var innerWidth = window.innerWidth;
 				//						popover.style.left = (Math.min(Math.max(offsetLeft, defaultPadding), innerWidth - offsetWidth - defaultPadding)) + "px";
 				//					} else {
-				//						//TODO anchor is position:{left,top,bottom,right}
 				//					}
 				//				}
 			}
@@ -6835,7 +6822,6 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 				}
 				if (classList.contains(CLASS_TABLE_VIEW_CELL)) {
 					cell = target;
-					//TODO swipe to delete close
 					var selected = cell.parentNode.querySelector(SELECTOR_SELECTED);
 					if (!cell.parentNode.classList.contains(CLASS_RADIO_VIEW) && selected && selected !== cell) {
 						$.swipeoutClose(selected);
@@ -7258,7 +7244,6 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 			}
 
 		} else {
-			//TODO H5版本
 			window.alert(message);
 		}
 	};
@@ -7772,7 +7757,7 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 	//	$.hideProgressbar = hideProgressbar;
 })(mui, document);
 /**
- * Input(TODO resize)
+ * Input
  * @param {type} $
  * @param {type} window
  * @param {type} document

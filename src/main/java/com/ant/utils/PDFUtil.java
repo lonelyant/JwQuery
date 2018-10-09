@@ -20,18 +20,34 @@ public class PDFUtil {
     //该路径下应该存在模板table.pdf、字体文件font.TTF。并且生成的PDF也会存在这个文件夹下。
     private static final String basePath = "C:/Users/Administrator/Desktop/$RC8URVW/";
 
-    private String xy = "机电工程学院";
-    private String banji = "2014机械设计制造及其自动化1班";
+    private String xy = "武汉东湖学院（默认）";
+    private String banji = "机设1班（默认）";
     private String nianji = "2014";
-    private String xingming = "张晨曦";
-    private String xuehao = "2014040191031";
+    private String xingming = "Ant";
+    private String xuehao = "2014000000000";
     private List<Lesson> bixiu = new ArrayList<>();
     private List<Lesson> xuanxiu = new ArrayList<>();
-    private float A1 = 88.56f;
-    private float A2 = 91.23f;
-    private float B = 15.5f;
-    private float F = 6.5f;
+    private float A1 = 0.0f;
+    private float A2 = 0.0f;
+    private float B = 0.0f;
+    private float F = 0.0f;
 
+    public PDFUtil(String xy, String banji, String nianji, String xingming, String xuehao, List<Lesson> bixiu, List<Lesson> xuanxiu, float a1, float a2, float b, float f) {
+        this.xy = xy;
+        this.banji = banji;
+        this.nianji = nianji;
+        this.xingming = xingming;
+        this.xuehao = xuehao;
+        this.bixiu = bixiu;
+        this.xuanxiu = xuanxiu;
+        A1 = a1;
+        A2 = a2;
+        B = b;
+        F = f;
+    }
+
+    public PDFUtil() {
+    }
 
     public static void main(String[] args) {
         try {
@@ -83,7 +99,7 @@ public class PDFUtil {
 
         /******************** 基本信息模块 *********************/
 
-        bixiu.add(new Lesson("专业（生产）实习（III）", "2", "97"));
+        /*bixiu.add(new Lesson("专业（生产）实习（III）", "2", "97"));
         bixiu.add(new Lesson("计算机辅助设计与制造（CAD/CAM）", "2", "97"));
         bixiu.add(new Lesson("大学物理实验（机电本下）", "2", "100"));
         bixiu.add(new Lesson("大学物理（机电本下）", "2.5", "97"));
@@ -121,7 +137,7 @@ public class PDFUtil {
         xuanxiu.add(new Lesson("趣味心理学", "3", "100"));
         xuanxiu.add(new Lesson("趣味心理学", "3", "100"));
         xuanxiu.add(new Lesson("专利技术", "3", "100"));
-        xuanxiu.add(new Lesson("专利技术", "3", "100"));
+        xuanxiu.add(new Lesson("专利技术", "3", "100"));*/
 
         Float temp1 = 0.0f;
         Float temp2 = 0.0f;

@@ -4,10 +4,8 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author: Ant
@@ -16,6 +14,7 @@ import java.util.Map;
  */
 public class VCodeOCR {
 
+    private static Properties properties = PropertiesUtil.argumentConfigParse();
     private static Map<BufferedImage, String> trainMap = null;
 
     public static int isBlue(int colorInt) {
@@ -87,7 +86,7 @@ public class VCodeOCR {
     public static Map<BufferedImage, String> loadTrainData() throws Exception {
         if (trainMap == null) {
             Map<BufferedImage, String> map = new HashMap<BufferedImage, String>();
-            File dir = new File("C:\\Users\\Administrator\\Desktop\\image\\train");
+            File dir = new File(properties.getProperty("BasePath")+properties.getProperty("trainPath"));
 //            File dir = new File("/root/Ant/JW/image/train");
             File[] files = dir.listFiles();
             for (File file : files) {

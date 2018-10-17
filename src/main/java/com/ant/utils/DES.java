@@ -14,7 +14,7 @@ import java.security.SecureRandom;
  * @Description:
  */
 public class DES {
-    private static final String key = "zcxx1997";
+    private static final String key = "######";
 
     public static void main(String[] args) {
         String ecodes = ecodes("2014040191031(--)z78l10y125(--)192.168.1.152");
